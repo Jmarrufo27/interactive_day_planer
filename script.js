@@ -14,4 +14,24 @@ updateTime();
 //runs update() every second
 setInterval(updateTime, 1000);
 
+function colorCode() {
 
+    for (let i = 0; i < textboxes.length; i++) {
+        const input = textboxes[i];
+
+        if (input.dataset.hour < today.format('H')) {
+            input.classList.add('past')
+        }
+        else if (input.dataset.hour == today.format('H')) {
+            input.classList.add('present')
+        }
+        else if (input.dataset.hour > today.format('H')) {
+            input.classList.add('future')
+        }
+        
+    }
+}
+//calls function colorCode()
+colorCode();
+//set and interval to run the function 'colorCode()' every 60secs
+setInterval(colorCode, 60 * 1000);
