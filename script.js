@@ -2,6 +2,8 @@ var currentDay = $('#currentDay');
 var today = moment();
 var textboxes = $('.textarea');
 var saveBtn = $('.saveButton');
+var input = document.getElementsByClassName('input');
+var hour = document.getElementsByClassName('hour');
 console.log(textboxes);
 
 //function that prints the date and time in the currentDay element on the html 
@@ -36,16 +38,19 @@ colorCode();
 //set and interval to run the function 'colorCode()' every 60secs
 setInterval(colorCode, 60 * 1000);
 
-function saveToDO() {
 
-    for (let i = 0; i < textboxes.length; i++) {
-        const input = textboxes[i];
+saveBtn.addEventListener('click', function (event) {
+    event.preventDefault();
 
-        if(input.value !== ""){
-            localStorage.setItem(input, input.value);
-            input = localStorage.getItem(input);
+
+    for (let i = 0; i < input.length; i++) {
+        const textbox = input[i];
+
+        if(textbox.value !== ""){
+                
+              var toDO =  localStorage.setItem("todo", input.value);
+            input.text(localStorage.getItem(input));
+            }
+            
         }   
-    }
-}
-
-saveBtn.addEventListener('click', saveToDO);
+    })
