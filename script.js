@@ -1,13 +1,13 @@
-var currentDay = document.getElementById('currentDay');
+var currentDay = $('#currentDay');
 var today = moment();
-var textboxes = document.getElementsByClassName('textarea');
-var saveBtn = document.querySelectorAll('saveButton');
+var textboxes = $('.textarea');
+var saveBtn = $('.saveButton');
 console.log(textboxes);
 
 //function that prints the date and time in the currentDay element on the html 
 function updateTime() {
     
-    currentDay.innerHTML = moment().format('MMMM Do YYYY, h:mm:ss a');
+    currentDay.text(moment().format('MMMM Do YYYY, h:mm:ss a'));
 }
 //called update to run
 updateTime();
@@ -35,3 +35,17 @@ function colorCode() {
 colorCode();
 //set and interval to run the function 'colorCode()' every 60secs
 setInterval(colorCode, 60 * 1000);
+
+function saveToDO() {
+
+    for (let i = 0; i < textboxes.length; i++) {
+        const input = textboxes[i];
+
+        if(input.value !== ""){
+            localStorage.setItem(input, input.value);
+            input = localStorage.getItem(input);
+        }   
+    }
+}
+
+saveBtn.addEventListener('click', saveToDO);
