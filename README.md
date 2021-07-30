@@ -9,3 +9,5 @@ Green for times in the future.
 
 when a user types in the text areas for the time slots and clicks the save button the text should persist on the page
 even upon refresh.
+
+![here's a screenshot of the planner](assets\2021-07-28%20(1).png)

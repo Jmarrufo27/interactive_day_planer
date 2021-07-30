@@ -1,9 +1,9 @@
 var currentDay = $('#currentDay');
 var today = moment();
 var textboxes = $('.textarea');
-var saveBtn = $('.saveButton');
-var input = document.getElementsByClassName('input');
-var hour = document.getElementsByClassName('hour');
+var saveBtn = $('.saveBtn');
+var hour = $('.hour');
+var data = {hour9: '', hour10: '', hour11: '', hour12: '', hour13: '', hour14: '', hour15: '', hour16: ''};
 console.log(textboxes);
 
 //function that prints the date and time in the currentDay element on the html 
@@ -39,18 +39,37 @@ colorCode();
 setInterval(colorCode, 60 * 1000);
 
 
-saveBtn.addEventListener('click', function (event) {
+saveBtn.on('click', function (event) {
     event.preventDefault();
 
+    var clickedBtn = $(this)
+    console.log(clickedBtn)
 
-    for (let i = 0; i < input.length; i++) {
-        const textbox = input[i];
+    var timeInput = clickedBtn.parent().children('.textarea').eq(0);
+    var time = timeInput.attr('data-hour')
+    var key = 'hour' + time
+    data[key] = 'test'
+    console.log(data)
 
-        if(textbox.value !== ""){
+    console.log(time);
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    // for (let i = 0; i < input.length; i++) {
+    //     const textbox = input[i];
+
+    //     if(textbox.value !== ""){
                 
-              var toDO =  localStorage.setItem("todo", input.value);
-            input.text(localStorage.getItem(input));
-            }
+    //           var toDO =  localStorage.setItem("todo", input.value);
+    //         input.text(localStorage.getItem(input));
+    //         }
             
-        }   
+    //     }   
     })
