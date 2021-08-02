@@ -1,4 +1,4 @@
-This is a day planner with time spots from 9am to 5pm
+**This is a day planner with time spots from 9am to 5pm**
 
 current date and time is displayed and updated every second
 
